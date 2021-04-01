@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tasks{% endblock %}
+
+{% block body %}
+    <h2>Task List</h2>
+    <a class="btn btn-success mb-2" href="{{ path('task_new') }}"><i class="bi bi-plus-circle"></i>&nbsp;Create Task</a>
+    <div class="row">
+        <div class="col">
+            <div class="card p-1">
+            {% if tasks %}
+            <ul class="list-group list-group-flush">
+                {% for task in tasks %}
+                    <li class="list-group-item">
+                        <strong>Task:</strong>&nbsp;{{ task.task }}</br>
+                        Due Date:&nbsp;{{ task.dueDate ? task.dueDate|date('d-m-Y') : '' }}&nbsp;&nbsp;
+                        <a href="{{ path('task_edit', {'id': task.id}) }}" class="btn btn-warning btn-sm"><i class="bi bi-pencil-fill"></i></a>
+                    </li>
+                {% endfor %}
+            </ul>
+            {% else %}
+            <div class="alert alert-info">
+                no tasks found!
+            </div>
+            {% endif %}
+            </div>
+        </div>
+        <div class="col">&nbsp;</div>
+        <div class="col">&nbsp;</div>
+    </div>  
+{% endblock %}
