@@ -20,5 +20,6 @@ framework:
         legacy_error_messages: false
     
     http_client:
+        max_host_connections: 5
         default_options:
-                max_redirects: 5
+                max_redirects: 3

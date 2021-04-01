@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello MyController!{% endblock %}
+
+{% block body %}
+    <div class="card p-1">
+        {% for country in countries %}
+            {{ country.id }}: {{ country.name}}, Population: {{country.population |format_number({fraction_digit:2})}}<br>
+        {% endfor %}
+    </div>
+{% endblock %}
